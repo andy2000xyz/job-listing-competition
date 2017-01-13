@@ -40,4 +40,10 @@ class JobsController < ApplicationController
     redirect_to jobs_path, notice:"Job delete"
   end
 
+  private
+
+  def job_params
+    params.require(:job).permit(:title, :description)
+  end
+
 end
