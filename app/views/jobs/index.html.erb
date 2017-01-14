@@ -1,3 +1,10 @@
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<div class="container">
+    <div class="fb-profile">
+        <img align="left" class="fb-image-lg" src="https://gr8speech.com/wp-content/uploads/2016/02/adults-inside.jpg" alt="Profile image example"/>
+    </div>
+</div> <!-- /container -->
+
 <div class="dropdown clearfix pull-right">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       排序
@@ -18,34 +25,23 @@
     </ul>
 </div>
 
-<table class="table table-boldered">
-    <thead>
-        <tr>
-            <td>
-                职缺</td>
-            <td>薪资下限</td>
-            <td>薪资上限</td>
-            <td>刊登时间</td>
-        </tr>
+<div class="container">
+	<div class="row">
+	<h2 style="text-align:center"> 分享主题列表</h2>
 
-    </thead>
-    <tbody>
-        <% @jobs.each do |job| %>
-        <tr>
-            <td>
-                <%= link_to(job.title, job_path(job)) %>
-            </td>
-            <td>
-                <%= job.wage_lower_bound %>
-            </td>
-            <td>
-                <%= job.wage_upper_bound %>
-            </td>
-            <td>
-                <%= job.created_at %>
-            </td>
-        </tr>
-        <% end %>
-    </tbody>
+<div>
+    <% @jobs.each do |job| %>
 
-</table>
+<div class="col-md-3 col-sm-3 col-xs-12">
+<div class="columns">
+  <ul class="name">
+    <li class="header"><%= link_to(job.title, job_path(job)) %> </li>
+    <li class="highlight">薪酬下限／场：￥<%= job.wage_lower_bound %></li>
+    <li class="highlight">薪酬上限／场：￥<%= job.wage_upper_bound %></li>
+    <li class="highlight">创建时间：<%= job.created_at %></li>
+    <li class="grey"><%= link_to("查看详情", job_path(job)) %></li>
+  </ul>
+</div>
+</div>
+<% end %>
+</div>
